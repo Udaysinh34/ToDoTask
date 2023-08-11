@@ -1,0 +1,81 @@
+<div class="container-fluid"style="background-color: rgb(231, 243, 255); margin-top: -13px; padding-bottom: 339px;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Sign Up</h1>
+                </div>
+            <form>
+                <form [formGroup]="signupForm" (ngSubmit)="sendSignupData()">
+                    <div class="row">
+                        <div class="col">
+                            <input formControlName="firstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
+                            <section *ngIf="firstName?.invalid &&(firstName?.dirty||firstName?.touched)">
+                                <p></p>
+                                <div *ngIf="firstName?.errors?.['required']" class="asset1" >First Name is required</div>
+                                <div *ngIf="firstName?.errors?.['minlength']" class="asset1">First Name should have atleast '4' characters</div>
+                                <div *ngIf="firstName?.errors?.['maxlength']" class="asset1">First Name should have maximum of '10' characters</div>
+                                <div *ngIf="firstName?.errors?.['pattern']" class="asset1">Only Alphabets are allowed</div>
+                            </section>
+                        </div>
+                        <div class="col">
+                            <input formControlName="lastName"  type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                            <section *ngIf="lastName?.invalid &&(lastName?.dirty||lastName?.touched)">
+                                <p></p>
+                                <div *ngIf="lastName?.errors?.['required']" class="asset1" >Last Name is required</div>
+                                <div *ngIf="lastName?.errors?.['minlength']" class="asset1">Last Name should have atleast '3' characters</div>
+                                <div *ngIf="lastName?.errors?.['maxlength']" class="asset1">Last Name should have maximum of '10' characters</div>
+                                <div *ngIf="lastName?.errors?.['pattern']" class="asset1">Only Alphabets are allowed</div>
+                            </section>
+                        </div>
+                    </div>
+                        <br>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                        <input formControlName="email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div *ngIf="email?.invalid &&(email?.dirty||email?.touched)">
+                            <p></p>
+                            <div class="asset1" *ngIf="email?.errors?.['required']">
+                            Email Id is required.
+                            </div>
+                            <div class="asset1" *ngIf="email?.errors?.['pattern']">
+                            Email Id is invalid.
+                            </div>
+                        </div>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div>
+                        <button type="button" (click)="sendEmailData()" class="btn btn-primary">Send OTP</button> 
+                    </div>
+                    <div class="mb-3">
+                        <label for="Otp1" class="form-label">OTP</label>
+                        <input formControlName="otp"  type="text" class="form-control" >
+                        <!-- <div *ngIf="password?.invalid &&(password?.dirty||password?.touched)">
+                            <div class="asset1" *ngIf="password?.errors?.['required']">
+                                Password is required.
+                            </div>
+                            <div class="asset1" *ngIf="password?.errors?.['pattern']">
+                                Password should have min 8 letters with a symbol, number, upper and lower case letters.
+                            </div>
+                            </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input formControlName="password"  type="password" class="form-control" id="exampleInputPassword1">
+                        <div *ngIf="password?.invalid &&(password?.dirty||password?.touched)">
+                            <div class="asset1" *ngIf="password?.errors?.['required']">
+                                Password is required.
+                            </div>
+                            <div class="asset1" *ngIf="password?.errors?.['pattern']">
+                                Password should have min 8 letters with a symbol, number, upper and lower case letters.
+                            </div>
+                            </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button> 
+                </form>
+            </form>
+                <a style="color: aliceblue;margin-top: 10px;" routerLink="/login">Already registered ? click here to login !!!</a>
+            </div>
+        </div>
+    </div >
+</div>

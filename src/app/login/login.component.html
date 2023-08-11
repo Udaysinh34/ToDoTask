@@ -1,0 +1,38 @@
+<div style="background-color: rgb(231, 243, 255); margin-top: -13px; padding-bottom: 395px;">
+    <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </mat-card>
+    <div class="container" *ngIf="!isLoading">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Login</h1>
+                </div>
+                    <form [formGroup] = 'loginForm' (ngSubmit) = 'sendLoginData()'>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                            <input type="email" formControlName="email"  class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" >
+                            <div *ngIf="email?.invalid &&(email?.dirty||email?.touched)">
+                                <div class="asset1" *ngIf="email?.errors?.['pattern']">
+                                    Email Id is invalid.
+                                    </div>
+                            <div *ngIf="email?.errors?.['required']" class="asset1" >Email is Required</div>
+                            </div>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" formControlName="password"  class="form-control" id="exampleInputPassword1">
+                            <div *ngIf="password?.invalid &&(password?.dirty||password?.touched)">
+                                <div *ngIf="password?.errors?.['required']" class="asset1" >Password is Required</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+                    </form>
+                    <a style="color: aliceblue;margin-top: 10px;" routerLink="/signup">New User ? click here to Sign up. </a>                
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

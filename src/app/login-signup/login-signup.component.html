@@ -1,0 +1,47 @@
+<body >
+    <app-header></app-header>
+    <div class="body1">
+
+   
+    <div class="container">
+        <div class="orangeBG">
+            <div class="box signin">
+                <h2>Already Have An Account?</h2>
+                <button class="signinbtn" (click)="btnActive('signin')">Sign in</button>
+            </div>
+            <div class="box signup">
+                <h2>Create An Account</h2>
+                <button class="signupbtn" (click)="btnActive('signup')">Register</button>
+            </div>
+        </div>
+        <div class="form-box">
+            <div class="form signinform">
+                <form [formGroup] ="loginForm" (ngSubmit) ='sendLoginData()'>
+                    <h3>Sign in</h3>
+                    <input formControlName="email" class="form-control" type="email" placeholder="Email">
+                    <input formControlName="password"  class="form-control" type="password" placeholder="Password">
+                    <input type="submit" value="Sign in">
+                    <a href="#">Forgot Password?</a>
+
+                </form>
+            </div>
+            <div class="form signupform">
+                <form class="signupBox" [formGroup]="signupForm" (ngSubmit)="sendSignupData()">
+                    <h3 style="margin-left: 40%;">Sign Up</h3>
+                    <input formControlName="firstName" type="text" placeholder="Firstname" class="form-control">
+                    <input formControlName="lastName" type="text" placeholder="Lastname" class="form-control">
+                    <input formControlName="email1" type="email" placeholder="Email" class="form-control">
+                    <div style="display: flex;">
+                        <input formControlName="otp" type="text" placeholder="OTP" class="form-control" style="width:100%">
+                        <input type="button" (click)="sendEmailData()" value="Send OTP">
+                    </div>
+                    <input formControlName="password" type="password" placeholder="Password" class="form-control">
+                    <input type="submit" value="Sign up">
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
